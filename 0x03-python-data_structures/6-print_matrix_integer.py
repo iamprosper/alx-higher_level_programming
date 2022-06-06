@@ -2,6 +2,9 @@
 def print_matrix_integer(matrix=[[]]):
     i = 0
     matrix_len = len(matrix)
+    if matrix_len == 1:
+        print()
+        return
     for i in range(0, matrix_len):
         # print(matrix[i])
         values = len(matrix[i])
