@@ -8,10 +8,14 @@
  */
 int is_palindrome(listint_t **head)
 {
+
 	listint_t *first_node = NULL;
 	listint_t *second_node = NULL;
 	listint_t *second_node_reversed = NULL;
 	listint_t *current = NULL;
+
+	if (list_size(*head) == 0)
+		return (1);
 
 	divide_linked_list(*head, &first_node, &second_node);
 	current = second_node;
