@@ -33,7 +33,6 @@ class Square:
             size = 0
 
         self.__size = size
-        self.area = self.__size ** 2
 
     def get_size(self):
         """Size guetter
@@ -57,4 +56,4 @@ class Square:
         Returns:
             The area of the square
         """
-        return(self.area)
+        return(self.__size ** 2)
