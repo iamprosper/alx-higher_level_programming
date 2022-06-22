@@ -18,11 +18,20 @@ class Square:
         Args:
             size (int): The first parameter
         """
-        if(isinstance(size, int)):
-            if(size < 0):
-                raise ValueError("size must be >= 0")
-        else:
-            raise TypeError("size must be an integer")
+        try:
+            if(isinstance(size, int)):
+                try:
+                    if(size < 0):
+                        raise ValueError("size must be >= 0")
+                except ValueError as ve:
+                    print(ve)
+                    size = 0
+            else:
+                raise TypeError("size must be an integer")
+        except TypeError as te:
+            print(te)
+            size = 0
+
         self.__size = size
         self.area = self.__size * self.__size
 
