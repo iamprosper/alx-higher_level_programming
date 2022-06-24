@@ -60,7 +60,5 @@ class Square:
         elif self.size > 0:
             for x in range(self.size):
                 for y in range(self.size):
-                    if y < (self.size - 1):
-                        print('#', end=" ")
-                    else:
-                        print('#')
+                    print('#', end="")
+                print()
