@@ -23,6 +23,7 @@ class Square:
         """
         self.size = size
         self.position = position
+        self.__valid = True
 
     @property
     def size(self):
@@ -45,7 +46,6 @@ class Square:
                 raise ValueError("size must be >= 0")
         else:
             raise TypeError("size must be an integer")
-
         self.__size = size
 
     @property
@@ -53,7 +53,7 @@ class Square:
         """Position guetter
 
         Returns:
-            The value of the square size.
+            The value of the square position.
         """
         return self.__position
 
@@ -69,10 +69,11 @@ class Square:
                     or position[1] < 0):
                 raise TypeError(("position must be a "
                                  "tuple of 2 positive integers"))
+                self.__valid = False
         else:
             raise TypeError(("position must be a "
                              "tuple of 2 positive integers"))
-
+            self.__valid = False
         self.__position = position
 
     def area(self):
@@ -87,7 +88,7 @@ class Square:
         """Square printing with # character"""
         if self.size == 0:
             print()
-        elif self.size > 0:
+        elif self.size > 0 and self.__valid:
             for x in range(self.size):
                 for p1 in range(self.position[0]):
                     print(" ", end="")
