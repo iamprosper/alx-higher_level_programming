@@ -92,9 +92,11 @@ class Square:
         if self.size == 0:
             print()
         elif self.size > 0 and self.__valid:
+            for y in range(self.position[1]):
+                print()
             for x in range(self.size):
-                for p1 in range(self.position[0]):
+                for px in range(self.position[0]):
                     print(" ", end="")
-                for y in range(self.size):
+                for s in range(self.size):
                     print('#', end="")
                 print()
