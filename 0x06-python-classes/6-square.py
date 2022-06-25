@@ -67,10 +67,10 @@ class Square:
         if(isinstance(position, tuple)):
             if(len(position) != 2 or position[0] < 0
                     or position[1] < 0):
-                raise TypeError(("position must be a"
+                raise TypeError(("position must be a "
                                  "tuple of 2 positive integers"))
         else:
-            raise TypeError(("position must be a"
+            raise TypeError(("position must be a "
                              "tuple of 2 positive integers"))
 
         self.__position = position
