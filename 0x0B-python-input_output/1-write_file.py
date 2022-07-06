@@ -10,7 +10,4 @@ def write_file(filename="", text=""):
             -text: The content to add
     """
     ch = 0
-    with open(filename, 'a', encoding="utf-8") as f:
-        ch = f.write(text)
-        f.close()
     return(ch)
