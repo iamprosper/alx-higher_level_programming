@@ -32,7 +32,7 @@ def load_from_json_file(filename):
 if __name__ == "__main__":
     import sys
     elements = []
-    filename = "add_item_.json"
+    filename = "add_item.json"
     try:
         elements = load_from_json_file(filename)
     except FileNotFoundError as fe:
