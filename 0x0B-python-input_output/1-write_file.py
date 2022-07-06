@@ -10,14 +10,7 @@ def write_file(filename="", text=""):
             -text: The content to add
     """
     ch = 0
-    try:
-        with open(filename, 'r+', encoding="utf-8") as f:
-            f.seek(0)
-            ch = f.write(text)
-            f.truncate()
-            f.close()
-    except FileNotFoundError as fe:
-        with open(filename, 'w', encoding="utf-8") as f:
-            ch = f.write(text)
-            f.close()
+    with open(filename, 'w', encoding="utf-8") as f:
+        ch = f.write(text)
+        f.close()
     return(ch)
