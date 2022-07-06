@@ -16,10 +16,8 @@ def write_file(filename="", text=""):
             ch = f.write(text)
             f.truncate()
             f.close()
-            print("File contents updated")
     except FileNotFoundError as fe:
         with open(filename, 'w', encoding="utf-8") as f:
             ch = f.write(text)
             f.close()
-            print("File newly created")
     return(ch)
