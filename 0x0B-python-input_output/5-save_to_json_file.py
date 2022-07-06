@@ -12,7 +12,7 @@ def save_to_json_file(my_obj, filename):
         -my_obj: The json object
         -filename: The path of the file's name
     """
-    json_file = json.dumps(my_obj)
     with open(filename, 'w') as f:
+        json_file = json.dumps(my_obj)
         f.write(json_file)
         f.close()
