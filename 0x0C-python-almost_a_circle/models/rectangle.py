@@ -83,3 +83,8 @@ class Rectangle(Base):
             for x in range(self.width):
                 print('#', end="")
             print("")
+
+    def __str__(self):
+        """ Overring/Customizing print (verbose) function """
+        desc = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
+        return desc.format(self.id, self.x, self.y, self.width, self.height)
