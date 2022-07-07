@@ -21,10 +21,14 @@ class Student:
         obj_values = self.__dict__
         filters = {}
         if attrs:
-            for attr in attrs:
-                if obj_values.get(attr):
-                    filters[attr] = obj_values.get(attr)
-        elif filters == {}:
+            if isinstance(attrs, list):
+                for attr in attrs:
+                    if obj_values.get(attr):
+                        filters[attr] = obj_values.get(attr)
+            else:
+                if obj_values.get(attrs):
+                    filter[attrs] = obj_values.get(attrs)
+        else:
             filters = obj_values
 
         return filters
