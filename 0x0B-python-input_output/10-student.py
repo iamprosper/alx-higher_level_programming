@@ -24,6 +24,7 @@ class Student:
             for attr in attrs:
                 if obj_values.get(attr):
                     filters[attr] = obj_values.get(attr)
-        else:
+        elif filters == {}:
             filters = obj_values
+
         return filters
