@@ -20,14 +20,10 @@ class Student:
     def to_json(self, attrs=None):
         obj_values = self.__dict__
         filters = {}
-        if attrs:
-            if isinstance(attrs, list):
-                for attr in attrs:
-                    if obj_values.get(attr):
-                        filters[attr] = obj_values.get(attr)
-            else:
-                if obj_values.get(attrs):
-                    filter[attrs] = obj_values.get(attrs)
+        if attrs and len(attrs) >= 1:
+            for attr in attrs:
+                if obj_values.get(attr):
+                    filters[attr] = obj_values.get(attr)
         else:
             filters = obj_values
 
