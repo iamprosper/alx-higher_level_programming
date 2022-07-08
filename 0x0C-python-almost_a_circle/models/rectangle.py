@@ -16,7 +16,7 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
-        self._all_attrs = ["id", "_width", "_height", "_x", "_y"]
+        # self._all_attrs = ["id", "_width", "_height", "_x", "_y"]
 
     @property
     def width(self):
@@ -111,19 +111,16 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 if key != "id":
-                    if key == "size":
-                        key = "width"
                     real_key = "_" + key
                 else:
                     real_key = key
-                idx = self._all_attrs.index(real_key)
-                setattr(self, self._all_attrs[idx], value)
+                # idx = self._all_attrs.index(real_key)
+                setattr(self, real_key, value)
 
     def to_dictionary(self):
         self_dict = {}
-        attrs_to_see = ["x", "y", "id", "height", "width"]
+        # attrs_to_see = ["x", "y", "id", "height", "width"]
         for key, value in self.__dict__.items():
-            if key != "_all_attrs":
-                attr = key.replace('_', '')
-                self_dict[attr] = self.__dict__.get(key)
+            attr = key.replace('_', '')
+            self_dict[attr] = self.__dict__.get(key)
         return self_dict

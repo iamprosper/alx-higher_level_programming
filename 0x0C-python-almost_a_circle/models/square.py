@@ -14,7 +14,7 @@ class Square(Rectangle):
     def __init__(self, size, x=0, y=0, id=None):
         """The constructor"""
         super().__init__(size, size, x, y, id)
-        self._all_attrs = ["id", "_width", "_x", "_y"]
+        # self._all_attrs = ["id", "_width", "_x", "_y"]
 
     def __str__(self):
         """Print the content of the object"""
@@ -29,3 +29,22 @@ class Square(Rectangle):
     def size(self, size):
         self.width = size
         self.height = size
+
+    def update(self, *args, **kwargs):
+        """Update the value of square's attributes"""
+        all_attrs = ["id", "size", "x", "y"]
+        idx = 0
+        if len(args) > 0:
+            while idx < len(args):
+                setattr(self, all_attrs[idx], args[idx])
+                idx += 1
+        else:
+            for k, v in kwargs.items():
+                if k != "id":
+                    if k == "size":
+                        setattr(self, "_width", v)
+                        setattr(self, "_heigth", v)
+                    else:
+                        key = '_' + k
+                        setattr(self, key, v)
+                setattr(self, k, v)
