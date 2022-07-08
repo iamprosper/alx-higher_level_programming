@@ -93,7 +93,7 @@ class Rectangle(Base):
         desc = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
         return desc.format(self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Update attributes values)
             Args:
                 -id: The identifier of the object
@@ -102,8 +102,17 @@ class Rectangle(Base):
                 -x: The x coordinate of the rectangle
         """
         all_attrs = ["id", "_width", "_height", "_x", "_y"]
-        idx = 0
-        while idx < len(args):
-            # self.__dict__[all_attrs[idx]] = args[idx]
-            setattr(self, all_attrs[idx], args[idx])
-            idx += 1
+        if len(args) > 0:
+            idx = 0
+            while idx < len(args):
+                # self.__dict__[all_attrs[idx]] = args[idx]
+                setattr(self, all_attrs[idx], args[idx])
+                idx += 1
+        else:
+            for key, value in kwargs.items():
+                if key != "id":
+                    real_key = "_" + key
+                else:
+                    real_key = key
+                idx = all_attrs.index(real_key)
+                setattr(self, all_attrs[idx], value)
