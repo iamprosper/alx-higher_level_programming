@@ -8,7 +8,7 @@ from .base import Base
 
 class Rectangle(Base):
     """ Rectangle class, containing constructor, getters and setters """
-
+    
     def __init__(self, width, height, x=0, y=0, id=None):
         """ The constructor """
         super().__init__(id)
@@ -16,6 +16,7 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
+        self._all_attrs = ["id", "_width", "_height", "_x", "_y"]
 
     @property
     def width(self):
@@ -100,19 +101,29 @@ class Rectangle(Base):
                 -width: The width of the rectangle
                 -height: The height of the rectangle
                 -x: The x coordinate of the rectangle
-        """
-        all_attrs = ["id", "_width", "_height", "_x", "_y"]
+        """ 
         if len(args) > 0:
             idx = 0
             while idx < len(args):
                 # self.__dict__[all_attrs[idx]] = args[idx]
-                setattr(self, all_attrs[idx], args[idx])
+                setattr(self, self._all_attrs[idx], args[idx])
                 idx += 1
         else:
             for key, value in kwargs.items():
                 if key != "id":
+                    if key == "size":
+                        key = "width"
                     real_key = "_" + key
                 else:
                     real_key = key
-                idx = all_attrs.index(real_key)
-                setattr(self, all_attrs[idx], value)
+                idx = self._all_attrs.index(real_key)
+                setattr(self, self._all_attrs[idx], value)
+
+    def to_dictionary(self):
+        self_dict = {}
+        attrs_to_see = ["x", "y", "id", "height", "width"]
+        for key, value in self.__dict__.items():
+            if key != "_all_attrs":
+                attr = key.replace('_', '')
+                self_dict[attr] = self.__dict__.get(key)
+        return self_dict
