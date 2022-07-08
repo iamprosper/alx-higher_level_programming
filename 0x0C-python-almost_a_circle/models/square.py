@@ -10,9 +10,11 @@ class Square(Rectangle):
     """ A class describin a square object.
     It contains constructor an modifiers
     """
+
     def __init__(self, size, x=0, y=0, id=None):
         """The constructor"""
         super().__init__(size, size, x, y, id)
+        self._all_attrs = ["id", "_width", "_x", "_y"]
 
     def __str__(self):
         """Print the content of the object"""
@@ -26,3 +28,4 @@ class Square(Rectangle):
     @size.setter
     def size(self, size):
         self.width = size
+        self.height = size
