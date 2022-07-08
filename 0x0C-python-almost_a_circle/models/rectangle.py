@@ -92,3 +92,18 @@ class Rectangle(Base):
         """ Overring/Customizing print (verbose) function """
         desc = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
         return desc.format(self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args):
+        """ Update attributes values)
+            Args:
+                -id: The identifier of the object
+                -width: The width of the rectangle
+                -height: The height of the rectangle
+                -x: The x coordinate of the rectangle
+        """
+        all_attrs = ["id", "_width", "_height", "_x", "_y"]
+        idx = 0
+        while idx < len(args):
+            # self.__dict__[all_attrs[idx]] = args[idx]
+            setattr(self, all_attrs[idx], args[idx])
+            idx += 1
