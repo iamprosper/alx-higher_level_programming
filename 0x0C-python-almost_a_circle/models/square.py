@@ -12,13 +12,17 @@ class Square(Rectangle):
     """
     def __init__(self, size, x=0, y=0, id=None):
         """The constructor"""
-        if (not isinstance(size, int)):
-            raise TypeError("size must be an integer")
-        elif size <= 0:
-            raise TypeError("size must be > 0")
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
         """Print the content of the object"""
         desc = "[Square] ({:d}) {:d}/{:d} - {:d}"
         return desc.format(self.id, self.x, self.y, self.width)
+
+    @property
+    def size(self):
+        return self.width
+
+    @size.setter
+    def size(self, size):
+        self.width = size
