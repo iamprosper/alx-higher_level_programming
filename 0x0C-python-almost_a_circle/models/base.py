@@ -39,3 +39,18 @@ class Base:
             json_repr = cls.to_json_string(objs_to_dictionary_list)
             with open(filename, "a+", newline="\n") as f:
                 f.write(json_repr)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """Creating list of dictionary from json string"""
+        if json_string is None:
+            return []
+        return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        obj = None
+        if cls.__name__ == "Rectangle":
+            obj = Rectangle(width=5, height=8)
+        else:
+            obj = Square(widht=5, height=5)
