@@ -49,8 +49,6 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        obj = None
-        if cls.__name__ == "Rectangle":
-            obj = Rectangle(width=5, height=8)
-        else:
-            obj = Square(widht=5, height=5)
+        obj = cls(width=5, height=5)
+        obj.update(**dictionary)
+        return obj

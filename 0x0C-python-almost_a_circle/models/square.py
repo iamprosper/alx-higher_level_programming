@@ -40,13 +40,12 @@ class Square(Rectangle):
                 idx += 1
         else:
             for k, v in kwargs.items():
-                if k != "id":
-                    if k == "size":
-                        setattr(self, "_width", v)
-                        setattr(self, "_heigth", v)
-                    else:
+                if k == "size":
+                    setattr(self, "_width", v)
+                    setattr(self, "_heigth", v)
+                else:
+                    if key != "id":
                         key = '_' + k
-                        setattr(self, key, v)
                 setattr(self, k, v)
 
     def to_dictionary(self):
