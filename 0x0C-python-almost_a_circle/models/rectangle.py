@@ -9,7 +9,7 @@ from .base import Base
 class Rectangle(Base):
     """ Rectangle class, containing constructor, getters and setters """
 
-    def __init__(self, width, height, x=0, y=0, id=None):
+    def __init__(self, width=5, height=5, x=0, y=0, id=None):
         """ The constructor """
         super().__init__(id)
         self.width = width

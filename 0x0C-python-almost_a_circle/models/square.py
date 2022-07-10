@@ -11,7 +11,7 @@ class Square(Rectangle):
     It contains constructor an modifiers
     """
 
-    def __init__(self, size, x=0, y=0, id=None):
+    def __init__(self, size=5, x=0, y=0, id=None):
         """The constructor"""
         super().__init__(size, size, x, y, id)
         # self._all_attrs = ["id", "_width", "_x", "_y"]
@@ -43,9 +43,8 @@ class Square(Rectangle):
                 if k == "size":
                     setattr(self, "_width", v)
                     setattr(self, "_heigth", v)
-                else:
-                    if key != "id":
-                        key = '_' + k
+                elif k != "id":
+                    k = '_' + k
                 setattr(self, k, v)
 
     def to_dictionary(self):

@@ -37,7 +37,7 @@ class Base:
             for obj in list_objs:
                 objs_to_dictionary_list.append(obj.to_dictionary())
             json_repr = cls.to_json_string(objs_to_dictionary_list)
-            with open(filename, "a+", newline="\n") as f:
+            with open(filename, "w", newline="\n") as f:
                 f.write(json_repr)
 
     @staticmethod
@@ -49,6 +49,21 @@ class Base:
 
     @classmethod
     def create(cls, **dictionary):
-        obj = cls(width=5, height=5)
+        """Create an object from dictionary"""
+        obj = cls()
         obj.update(**dictionary)
         return obj
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + ".json"
+        obj_list = []
+        try:
+            f = open(filename, 'r')
+            json_string = f.read()
+            obj_dict_list = cls.from_json_string(json_string)
+            for obj_dict in obj_dict_list:
+                obj_list.append(cls.create(**obj_dict))
+            return obj_list
+        except FileNotFoundError as fe:
+            return []
