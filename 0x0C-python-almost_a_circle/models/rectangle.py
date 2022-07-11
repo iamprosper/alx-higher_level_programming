@@ -3,7 +3,7 @@
     Class:
         -Rectangle
 """
-from models.base import Base
+from .base import Base
 
 
 class Rectangle(Base):
@@ -12,10 +12,10 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """ The constructor """
         super().__init__(id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+        self._width = width
+        self._height = height
+        self._x = x
+        self._y = y
 
     @property
     def width(self):
@@ -25,10 +25,6 @@ class Rectangle(Base):
     @width.setter
     def width(self, width):
         """ width setter """
-        if not isinstance(width, int):
-            raise TypeError("width must be an integer")
-        if width <= 0:
-            raise ValueError("width must be > 0")
         self._width = width
 
     @property
@@ -39,10 +35,6 @@ class Rectangle(Base):
     @height.setter
     def height(self, height):
         """ height setter """
-        if not isinstance(height, int):
-            raise TypeError("height must be an integer")
-        if height <= 0:
-            raise ValueError("height must be > 0")
         self._height = height
 
     @property
@@ -53,10 +45,6 @@ class Rectangle(Base):
     @x.setter
     def x(self, x):
         """ x setter """
-        if not isinstance(x, int):
-            raise TypeError("x must be an integer")
-        if x < 0:
-            raise ValueError("x must be >= 0")
         self._x = x
 
     @property
@@ -67,64 +55,4 @@ class Rectangle(Base):
     @y.setter
     def y(self, y):
         """ y setter """
-        if not isinstance(y, int):
-            raise TypeError("y must be an integer")
-        if y < 0:
-            raise ValueError("y must be >= 0")
         self._y = y
-
-    def area(self):
-        """ Area of the rectangle """
-        return self.width * self.height
-
-    def display(self):
-        """ Display the rectangle with # character """
-        for yy in range(self.y):
-            print("")
-        for h in range(self.height):
-            for xx in range(self.x):
-                print(" ", end="")
-            for w in range(self.width):
-                print('#', end="")
-            print("")
-
-    def __str__(self):
-        """ Overring/Customizing print (verbose) function """
-        desc = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
-        return desc.format(self.id, self.x, self.y, self.width, self.height)
-
-    def update(self, *args, **kwargs):
-        """ Update attributes values)
-            Args:
-                -id: The identifier of the object
-                -width: The width of the rectangle
-                -height: The height of the rectangle
-                -x: The x coordinate of the rectangle
-        """
-        if len(args) > 0:
-            idx = 0
-            while idx < len(args):
-                # self.__dict__[all_attrs[idx]] = args[idx]
-                all_attrs = ["id", "_width", "_height", "_x", "_y"]
-                setattr(self, all_attrs[idx], args[idx])
-                idx += 1
-        else:
-            for key, value in kwargs.items():
-                if key != "id":
-                    real_key = "_" + key
-                else:
-                    real_key = key
-                # idx = self._all_attrs.index(real_key)
-                setattr(self, real_key, value)
-
-    def to_dictionary(self):
-        self_dict = {}
-        attrs_to_see = ["id", "width", "height", "x", "y"]
-        for attr in attrs_to_see:
-            key = ""
-            if attr != "id":
-                key = '_' + attr
-            else:
-                key = attr
-            self_dict[attr] = self.__dict__.get(key)
-        return self_dict
