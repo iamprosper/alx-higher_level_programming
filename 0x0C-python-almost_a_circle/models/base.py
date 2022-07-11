@@ -67,3 +67,18 @@ class Base:
             return obj_list
         except FileNotFoundError as fe:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """Save a list of objs to csv file"""
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w') as f:
+            writer = csv.writer(f)
+            for obj in list_objs:
+                obj_dict = obj._to_dictionary()
+                for key in obj_dict:
+                    f.write("{:s}, {:d}".format(key, obj_dict[key]))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """Load csv to obj"""

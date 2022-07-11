@@ -119,8 +119,12 @@ class Rectangle(Base):
 
     def to_dictionary(self):
         self_dict = {}
-        # attrs_to_see = ["x", "y", "id", "height", "width"]
-        for key, value in self.__dict__.items():
-            attr = key.replace('_', '')
+        attrs_to_see = ["id", "width", "height", "x", "y"]
+        for attr in attrs_to_see:
+            key = ""
+            if attr != "id":
+                key = '_' + attr
+            else:
+                key = attr
             self_dict[attr] = self.__dict__.get(key)
         return self_dict
