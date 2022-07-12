@@ -114,3 +114,11 @@ class Rectangle(Base):
                 else:
                     attr = k
                 setattr(self, attr, v)
+
+    def to_dictionary(self):
+        """Rectangle to dictionary"""
+        self_dict = {}
+        for k, v in self.__dict__.items():
+            key = k.replace("_Rectangle__", '')
+            self_dict[key] = v
+        return self_dict
