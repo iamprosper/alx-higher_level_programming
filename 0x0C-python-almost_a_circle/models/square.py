@@ -33,6 +33,7 @@ class Square(Rectangle):
         self.height = size
 
     def update(self, *args, **kwargs):
+        """Updating the square"""
         atrs_list = ["id", "size", "x", "y"]
         s_atr = "_Rectangle__{:s}"
         if len(args) > 0:
