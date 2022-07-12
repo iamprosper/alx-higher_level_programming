@@ -89,5 +89,19 @@ class Rectangle(Base):
             print("")
 
     def __str__(self):
+        """Describing the object"""
         desc = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
         return desc.format(self.id, self.x, self.y, self.width, self.height)
+
+    def update(self, *args):
+        attrs_list = ["id", "width", "height", 'x', 'y']
+        idx = 0
+        key = ""
+        while idx < len(args):
+            if idx == 0:
+                attr = "id"
+            else:
+                s_attr = "_{:s}__{:s}"
+                attr = s_attr.format(self.__class__.__name__, attrs_list[idx])
+            setattr(self, attr, args[idx])
+            idx += 1
