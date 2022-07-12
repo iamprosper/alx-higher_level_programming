@@ -11,7 +11,7 @@ class Square(Rectangle):
     It contains constructor an modifiers
     """
 
-    def __init__(self, size=5, x=0, y=0, id=None):
+    def __init__(self, size, x=0, y=0, id=None):
         """The constructor"""
         super().__init__(size, size, x, y, id)
         # self._all_attrs = ["id", "_width", "_x", "_y"]
@@ -23,41 +23,11 @@ class Square(Rectangle):
 
     @property
     def size(self):
+        """The size getter"""
         return self.width
 
     @size.setter
     def size(self, size):
+        """The size setter"""
         self.width = size
         self.height = size
-
-    def update(self, *args, **kwargs):
-        """Update the value of square's attributes"""
-        all_attrs = ["id", "size", "x", "y"]
-        idx = 0
-        if len(args) > 0:
-            while idx < len(args):
-                setattr(self, all_attrs[idx], args[idx])
-                idx += 1
-        else:
-            for k, v in kwargs.items():
-                if k == "size":
-                    setattr(self, "_width", v)
-                    setattr(self, "_heigth", v)
-                elif k != "id":
-                    k = '_' + k
-                setattr(self, k, v)
-
-    def to_dictionary(self):
-        """Dictionary representaion of square"""
-        self_dict = {}
-        attrs_to_see = ["id", "size", "x", "y"]
-        for attr in attrs_to_see:
-            key = ""
-            if attr != "id":
-                key = attr.replace('_', '')
-            elif attr = "size":
-                key = "_width"
-            else:
-                key = attr
-            self_dict[attr] = self.__dict__.get(key)
-        return self_dict
