@@ -93,16 +93,24 @@ class Rectangle(Base):
         desc = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
         return desc.format(self.id, self.x, self.y, self.width, self.height)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Upadate an attribute/sequence of attrs"""
-        attrs_list = ["id", "width", "height", 'x', 'y']
+        atrs_list = ["id", "width", "height", 'x', 'y']
         idx = 0
         key = ""
-        while idx < len(args):
-            if idx == 0:
-                attr = "id"
-            else:
-                s_attr = "_{:s}__{:s}"
-                attr = s_attr.format(self.__class__.__name__, attrs_list[idx])
-            setattr(self, attr, args[idx])
-            idx += 1
+        s_atr = "_{:s}__{:s}"
+        if len(args) != 0:
+            while idx < len(args):
+                if idx == 0:
+                    atr = "id"
+                else:
+                    atr = s_atr.format(self.__class__.__name__, atrs_list[idx])
+                setattr(self, attr, args[idx])
+                idx += 1
+        else:
+            for k, v in kwargs.items():
+                if k != "id":
+                    attr = s_atr.format(self.__class__.__name__, k)
+                else:
+                    attr = k
+                setattr(self, attr, v)
