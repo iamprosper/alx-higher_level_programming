@@ -85,5 +85,5 @@ class Rectangle(Base):
             print("")
 
     def __str__(self):
-        desc = "[Rectangle] ({:d}) {:d}/{:d} {:d}/{:d}"
+        desc = "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}"
         return desc.format(self.id, self.x, self.y, self.width, self.height)
