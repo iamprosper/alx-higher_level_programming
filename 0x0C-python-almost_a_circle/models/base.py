@@ -33,12 +33,12 @@ class Base:
         filename = class_name + ".json"
         objs_to_dictionary_list = []
 
-        if list_objs != []:
+        if list_objs != [] and list_objs is not None:
             for obj in list_objs:
                 objs_to_dictionary_list.append(obj.to_dictionary())
-            json_repr = cls.to_json_string(objs_to_dictionary_list)
-            with open(filename, "w", newline="\n") as f:
-                f.write(json_repr)
+        json_repr = cls.to_json_string(objs_to_dictionary_list)
+        with open(filename, "w", newline="\n") as f:
+            f.write(json_repr)
 
     @staticmethod
     def from_json_string(json_string):
