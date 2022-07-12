@@ -94,6 +94,7 @@ class Rectangle(Base):
         return desc.format(self.id, self.x, self.y, self.width, self.height)
 
     def update(self, *args):
+        """Upadate an attribute/sequence of attrs"""
         attrs_list = ["id", "width", "height", 'x', 'y']
         idx = 0
         key = ""
