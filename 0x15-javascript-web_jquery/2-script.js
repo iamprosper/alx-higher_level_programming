@@ -1,1 +1,1 @@
-$('div#red_header').on('click', function () { this.sytle.color = '#FF0000'; });
+$('div#red_header').on('click', function () { $('header').css('#FF0000'); });
