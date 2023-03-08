@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 def print_last_digit(number):
-    str_n = str(number)[-1]
+    str_n = int(str(number)[-1])
     print("{}".format(str_n), end="")
     return str_n
 
