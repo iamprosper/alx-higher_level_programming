@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 def remove_char_at(string, n):
-    if (n >= string.length or n < 0):
+    if (n >= len(string) or n < 0):
         return
-    string[n] = ""
+    string = f"{string[:n]}{string[(n+1):]}"
+    return string
+
+# print(remove_char_at("Best School", 3))
