@@ -18,6 +18,6 @@ if __name__ == "__main__":
     elif (operator == "/"):
         result = div(a, b)
     else:
-        print("Unknown operator. Available operator: +, -, * and /")
+        print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
     print("{:d} {} {:d} = {:d}".format(a, operator, b, result))
