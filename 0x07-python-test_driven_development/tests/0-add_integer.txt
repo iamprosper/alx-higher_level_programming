@@ -1,6 +1,6 @@
 This module make addition between two integers
 
->>> add_integer = __import('0-add_integer').add_integer
+>>> add_integer = __import__('0-add_integer').add_integer
 
 >>> add_integer(5, 2)
 7
