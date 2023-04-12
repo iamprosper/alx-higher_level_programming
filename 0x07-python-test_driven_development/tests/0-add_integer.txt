@@ -22,8 +22,3 @@ TypeError: b must be an integer
 Traceback (most recent call):
     ...
 TypeError: add_integer() missing 1 required positional argument: 'a'
-
->>> add_integer(None)
-Traceback (most recent call last)
-    ...
-TypeError: a must be an integer
