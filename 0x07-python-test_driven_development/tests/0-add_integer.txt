@@ -19,6 +19,6 @@ Traceback (most recent call last):
 TypeError: b must be an integer
 
 >>> add_integer()
-Traceback (most recent call):
+Traceback (most recent call last):
     ...
 TypeError: add_integer() missing 1 required positional argument: 'a'
