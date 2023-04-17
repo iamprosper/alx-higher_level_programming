@@ -1,0 +1,22 @@
+>>> lazy_matrix_mul = __import__("101-lazy_matrix_mul").lazy_matrix_mul
+>>> print(lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]]))
+[[ 7 10]
+ [15 22]]
+
+>>> print(lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]]))
+[[13 16]]
+
+>>> print(lazy_matrix_mul([[5, 3]], [[5,4]]))
+Traceback (most recent call last):
+    ...
+ValueError: m_a and m_b can't be multiplied
+
+>>> print(lazy_matrix_mul([], []))
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+
+>>> print(lazy_matrix_mul([5], []))
+Traceback (most recent call last):
+    ...
+ValueError: m_b can't be empty
