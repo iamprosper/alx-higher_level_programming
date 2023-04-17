@@ -55,8 +55,8 @@ def mul(m_a, m_b):
     row = []
     total = 0
     for i in range(len(m_a)):
-        for ii in range(len(m_b)):
-            for j in range(len(m_b)):
+        for ii in range(len(m_b[0])):
+            for j in range(len(m_a[0])):
                 total += m_a[i][j] * m_b[j][ii]
             row.append(total)
             total = 0
