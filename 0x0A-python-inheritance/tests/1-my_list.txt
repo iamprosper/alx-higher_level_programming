@@ -31,4 +31,9 @@ This module test a sorted list
 >>> my_list.print_sorted()
 [-9, -8, -7, -5, -2]
 
+>>> my_list = MyList()
+>>> print(my_list)
+[]
 
+>>> my_list.print_sorted()
+[]
