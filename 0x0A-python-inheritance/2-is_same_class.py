@@ -8,4 +8,4 @@
 
 def is_same_class(obj, a_class):
     """The operating function"""
-    return isinstance(obj, a_class)
+    return True if isinstance(obj, a_class) else False
